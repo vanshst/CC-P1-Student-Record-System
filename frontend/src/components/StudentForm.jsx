@@ -2,13 +2,10 @@ import { useRef, useState } from 'react';
 import { EMPTY_STUDENT, MAX_SEMESTER, MIN_SEMESTER, toPayload, validateStudent } from '../utils/validation.js';
 
 const DEPARTMENTS = [
-  'Computer Science',
-  'Information Technology',
-  'Electronics',
+  'Computer Enginering',
   'Mechanical Engineering',
   'Civil Engineering',
   'Electrical Engineering',
-  'Business Administration',
 ];
 
 const SEMESTERS = Array.from({ length: MAX_SEMESTER - MIN_SEMESTER + 1 }, (_, i) => MIN_SEMESTER + i);
