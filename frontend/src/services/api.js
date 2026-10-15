@@ -4,8 +4,7 @@
 
 const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
-  // Convenience for `npm run dev` only. Production builds never use localhost.
-  (import.meta.env.DEV ? 'http://localhost:5000' : '')
+  'https://student-record-backend-cc-vansh.onrender.com'
 ).replace(/\/+$/, '');
 
 // Render's free plan can take about a minute to wake up, so we wait patiently.
