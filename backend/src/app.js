@@ -29,6 +29,7 @@ const defaultAllowedOrigins = [
   'http://localhost:5173',
   'http://127.0.0.1:5173',
   'http://localhost:3000',
+  'cc-p1-student-record-system-a7pvek7jw-vansh-f0dd.vercel.app',
   
   
 ];
