@@ -1,10 +1,9 @@
-// The ONLY place in the frontend that talks to the backend.
-// The address comes from the VITE_API_BASE_URL environment variable.
-// (Vite copies VITE_* variables into the public build - never put secrets in them.)
+
 
 const API_BASE_URL = (
   import.meta.env.VITE_API_BASE_URL ||
-  'https://student-record-backend-cc-vansh.onrender.com'
+  
+  (import.meta.env.DEV ? 'https://student-record-backend-cc-vansh.onrender.com' : '')
 ).replace(/\/+$/, '');
 
 // Render's free plan can take about a minute to wake up, so we wait patiently.
