@@ -15,10 +15,6 @@ if (!MONGODB_URI || MONGODB_URI.includes('YOUR_MONGODB_ATLAS_CONNECTION_STRING')
   );
   process.exit(1);
 }
-const cors = require('cors');
-
-// Enable CORS for all incoming origins
-app.use(cors());
 
 let server;
 let shuttingDown = false;
