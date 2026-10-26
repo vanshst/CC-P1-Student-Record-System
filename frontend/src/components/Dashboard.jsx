@@ -1,6 +1,17 @@
 export default function Dashboard({ students, loading }) {
   const total = students.length;
-  const departments = new Set(students.map((s) => s.department.trim().toLowerCase())).size;
+
+  const counts = new Map();
+  students.forEach((s) => {
+    const label = s.department.trim();
+    const key = label.toLowerCase();
+    const entry = counts.get(key) || { label, count: 0 };
+    entry.count += 1;
+    counts.set(key, entry);
+  });
+
+  const departments = counts.size;
+  const top = [...counts.values()].sort((a, b) => b.count - a.count)[0];
   const latest = students[0]; // the API returns newest first
 
   return (
@@ -15,6 +26,17 @@ export default function Dashboard({ students, loading }) {
         <div>
           <dt>Departments</dt>
           <dd>{departments}</dd>
+        </div>
+        <div>
+          <dt>Largest department</dt>
+          <dd>
+            {top ? top.label : 'None yet'}
+            {top && (
+              <span className="dash-sub">
+                {top.count} {top.count === 1 ? 'student' : 'students'}
+              </span>
+            )}
+          </dd>
         </div>
         <div>
           <dt>Latest addition</dt>
