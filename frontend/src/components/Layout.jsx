@@ -19,7 +19,7 @@ export default function Layout({ children }) {
             <span className="user-avatar" aria-hidden="true">VT</span>
             <span className="user-meta">
               <span className="user-label">Managed by</span>
-              <strong className="user-name">Vansh Thulwar</strong>
+              <strong className="user-name">Vansh Thurwal</strong>
             </span>
           </div>
         </div>
