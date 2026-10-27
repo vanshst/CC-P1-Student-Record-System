@@ -1,0 +1,244 @@
+/* ---------- Test 3 extras: motion, charts, badges ---------- */
+
+/* Greeting above the title */
+.header-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--campus);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Pulsing "online" dot in the user chip */
+.status-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin-left: 0.35rem;
+  border-radius: 50%;
+  background: var(--campus);
+  box-shadow: 0 0 10px var(--campus);
+}
+
+.status-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--campus);
+  opacity: 0;
+  animation: ping 2s ease-out infinite;
+}
+
+@keyframes ping {
+  0% { transform: scale(0.6); opacity: 0.8; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* Slow drifting aurora */
+body::before {
+  animation: drift 24s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-2%, 2%, 0) scale(1.08); }
+}
+
+/* Logo breathes a little */
+.header-logo {
+  animation: glow 4s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.7), 0 0 22px rgba(74, 222, 128, 0.4); }
+  50% { box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.9), 0 0 38px rgba(74, 222, 128, 0.7); }
+}
+
+/* Entrance animation for cards and panels */
+.dash-main,
+.dash-stats div,
+.insights,
+.panel {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.dash-stats div:nth-child(1) { animation-delay: 0.08s; }
+.dash-stats div:nth-child(2) { animation-delay: 0.16s; }
+.dash-stats div:nth-child(3) { animation-delay: 0.24s; }
+.insights { animation-delay: 0.3s; }
+.workspace-side .panel { animation-delay: 0.36s; }
+.workspace-main { animation-delay: 0.42s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Department breakdown ---------- */
+.insights {
+  margin-bottom: 2rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-md);
+}
+
+.insights-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1.1rem;
+}
+
+.insights-head h2 {
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.insights-head span {
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.bars {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 220px) 1fr 2.5rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.bar-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-track {
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.08);
+  overflow: hidden;
+}
+
+.bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--grad);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.55);
+  transform-origin: left center;
+  animation: grow 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes grow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.bar-value {
+  text-align: right;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--campus);
+}
+
+/* ---------- Table polish ---------- */
+.person {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #03140a;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  border-radius: 999px;
+  background: rgba(74, 222, 128, 0.1);
+  color: var(--ink-soft);
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pill {
+  display: inline-grid;
+  place-items: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: var(--campus);
+  font-weight: 800;
+}
+
+.table tbody tr:hover .avatar {
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.7);
+}
+
+/* Thin green scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 222, 128, 0.4) transparent;
+}
+
+@media (max-width: 600px) {
+  .bar-row {
+    grid-template-columns: 1fr 2.5rem;
+  }
+  .bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before,
+  .header-logo,
+  .status-dot::after,
+  .bar-fill,
+  .dash-main,
+  .dash-stats div,
+  .insights,
+  .panel {
+    animation: none !important;
+  }
+}

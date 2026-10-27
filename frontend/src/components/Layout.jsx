@@ -1,3 +1,10 @@
+function greeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'Good morning';
+  if (hour < 17) return 'Good afternoon';
+  return 'Good evening';
+}
+
 export default function Layout({ children }) {
   return (
     <>
@@ -10,6 +17,7 @@ export default function Layout({ children }) {
               className="header-logo"
             />
             <div className="header-text">
+              <span className="header-eyebrow">{greeting()}, Vansh</span>
               <h1>BAJAJ INSTITUTE OF TECHNOLOGY WARDHA</h1>
               <p>Student Information Management System</p>
             </div>
@@ -19,8 +27,9 @@ export default function Layout({ children }) {
             <span className="user-avatar" aria-hidden="true">VT</span>
             <span className="user-meta">
               <span className="user-label">Managed by</span>
-              <strong className="user-name">Vansh Thurwal</strong>
+              <strong className="user-name">Vansh Thulwar</strong>
             </span>
+            <span className="status-dot" title="System online" aria-label="System online" />
           </div>
         </div>
       </header>

@@ -1,5 +1,17 @@
 import Loader from './Loader.jsx';
 
+function initials(name) {
+  return (
+    name
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase() || '?'
+  );
+}
+
 export default function StudentTable({ students, totalCount, searchText, loading, error, onRetry, onEdit, onDelete }) {
   if (loading) {
     return <Loader block label="Loading students..." />;
@@ -61,14 +73,21 @@ export default function StudentTable({ students, totalCount, searchText, loading
                 {student.studentId}
               </td>
               <td data-label="Name" className="strong">
-                {student.name}
+                <span className="person">
+                  <span className="avatar" aria-hidden="true">
+                    {initials(student.name)}
+                  </span>
+                  <span>{student.name}</span>
+                </span>
               </td>
               <td data-label="Email" className="break">
                 {student.email}
               </td>
-              <td data-label="Department">{student.department}</td>
+              <td data-label="Department">
+                <span className="badge">{student.department}</span>
+              </td>
               <td data-label="Semester" className="num">
-                {student.semester}
+                <span className="pill">{student.semester}</span>
               </td>
               <td data-label="Contact">{student.contact || '-'}</td>
               <td className="actions">
